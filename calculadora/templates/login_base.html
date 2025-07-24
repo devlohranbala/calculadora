@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login - Calculadora Kogui{% endblock %}</title>
+    
+    <!-- CSRF Token -->
+    {% csrf_token %}
+    
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="login-page" data-requires-auth="false">
+    {% block content %}{% endblock %}
+
+    <!-- Common JavaScript -->
+    <script src="{% static 'js/common.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

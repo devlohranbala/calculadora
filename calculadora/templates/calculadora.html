@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Calculadora Kogui{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/calculator.css' %}">
+{% endblock %}
+{% block content %}
+        <div class="calculator-grid">
+            <div class="calculator">
+                <h2>Calculadora</h2>
+                <div class="display" id="display">0</div>
+                <div class="buttons">
+                    <button class="clear" onclick="clearDisplay()">C</button>
+                    <button class="clear" onclick="clearEntry()">CE</button>
+                    <button class="operator" onclick="appendToDisplay('/')">&divide;</button>
+                    <button class="operator" onclick="appendToDisplay('*')">&times;</button>
+                    
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                    <button class="operator" onclick="appendToDisplay('-')">-</button>
+                    
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button class="operator" onclick="appendToDisplay('+')">+</button>
+                    
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button class="equals" onclick="calculate()" rowspan="2">=</button>
+                    
+                    <button class="zero" onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('.')">.</button>
+                </div>
+            </div>
+            
+            <div class="history">
+                <h2>📊 Histórico</h2>
+                <div class="history-items" id="historyItems">
+                    <div class="loading">Carregando histórico...</div>
+                </div>
+                <button class="clear-history" onclick="clearHistory()">Limpar Histórico</button>
+            </div>
+        </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/calculator.js' %}"></script>
+{% endblock %}

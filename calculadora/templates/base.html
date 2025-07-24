@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Calculadora Kogui{% endblock %}</title>
+    
+    <!-- CSRF Token -->
+    {% csrf_token %}
+    
+    <!-- Common Styles -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body {% block body_attrs %}{% endblock %}>
+    {% block header %}
+    <div class="header">
+        <div class="header-left">
+            <img src="{% static 'kogui_tech_logo.jpeg' %}" alt="Kogui Tech Logo" class="logo">
+            <h1>{% block header_title %}Calculadora Kogui{% endblock %}</h1>
+        </div>
+        {% block header_actions %}
+        <div class="user-info">
+            <span class="user-name" id="userName">👤 Carregando...</span>
+            <button class="header-btn" onclick="showProfile()">📊 Perfil</button>
+            <button class="header-btn logout-btn" onclick="logout()">🚪 Sair</button>
+        </div>
+        {% endblock %}
+    </div>
+    {% endblock %}
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Common JavaScript -->
+    <script src="{% static 'js/common.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

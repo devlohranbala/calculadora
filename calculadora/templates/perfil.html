@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Perfil do Usuário{% endblock %}
+
+{% block body_attrs %}data-requires-auth="true"{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block header_title %}Perfil do Usuário{% endblock %}
+
+{% block header_actions %}
+<div class="header-actions">
+    <a href="/calculadora/" class="header-btn">🧮 Calculadora</a>
+    <button class="header-btn logout-btn" onclick="logout()">🚪 Sair</button>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="profile-grid">
+
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profileAvatar">👤</div>
+                    <div class="profile-name" id="profileName">Carregando...</div>
+                    <div class="profile-email" id="profileEmail">Carregando...</div>
+                </div>
+
+                <div class="profile-info">
+                    <div class="info-group">
+                        <div class="info-label">Nome</div>
+                        <div class="info-value editable" id="nameValue" onclick="editField('nome')">Carregando...</div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-label">Email</div>
+                        <div class="info-value editable" id="emailValue" onclick="editField('email')">Carregando...</div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-label">Membro desde</div>
+                        <div class="info-value" id="memberSince">Carregando...</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-delete" onclick="deletarConta()">🗑️ Apagar Cadastro</button>
+            </div>
+
+            <div class="history-section">
+                <div class="history-header">
+                    <h2 class="history-title">📊 Histórico Completo</h2>
+                    <button class="clear-history" onclick="clearHistory()">🗑️ Limpar Histórico</button>
+                </div>
+
+                <div class="history-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalOperations">0</div>
+                        <div class="stat-label">Operações</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="todayOperations">0</div>
+                        <div class="stat-label">Hoje</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="weekOperations">0</div>
+                        <div class="stat-label">Esta Semana</div>
+                    </div>
+                </div>
+
+                <div class="history-items" id="historyItems">
+                    <div class="loading">Carregando histórico...</div>
+                </div>
+
+                <div class="pagination" id="pagination" style="display: none;">
+                    <button id="prevPage" onclick="changePage(-1)">← Anterior</button>
+                    <span id="pageInfo">Página 1 de 1</span>
+                    <button id="nextPage" onclick="changePage(1)">Próxima →</button>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
